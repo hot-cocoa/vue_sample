@@ -14,13 +14,13 @@
         None Task
       </div>
       <div v-else>
-        <ul>
-          <li v-for="todo in todos">
+        <draggable :list="todos" :options="{animation: 200}">
+          <p v-for="todo in todos">
             {{ todo }}
-          </li>
-        </ul>
+          </p>
+        </draggable>
       </div>
-      
+
       <h3>タスク追加</h3>
       <input type="text" v-model="newTask" placeholder="タスクを入力して下さい">
       <button v-on:click=addTask>追加</button>
@@ -30,6 +30,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.17.0/vuedraggable.min.js"></script>
+
     <script src="./todo.js">
     </script>
   </body>
