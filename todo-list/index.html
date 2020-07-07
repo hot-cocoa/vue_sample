@@ -14,10 +14,10 @@
         None Task
       </div>
       <div v-else>
-        <draggable :list="todos" :options="{animation: 200}">
-          <p v-for="todo in todos">
+        <draggable :list="todos" :options="{animation: 200}" element="ul">
+          <li v-for="todo in todos">
             {{ todo }}
-          </p>
+          </li>
         </draggable>
       </div>
 
