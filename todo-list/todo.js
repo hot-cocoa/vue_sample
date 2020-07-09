@@ -10,8 +10,7 @@ const app = new Vue({
       this.taskCount++
       this.todos.push({
         name: this.newTask,
-        isDone: false,
-        status: this.STATUS.todo
+        isDone: false
       })
       this.newTask = null
     },
