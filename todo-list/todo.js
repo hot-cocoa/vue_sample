@@ -10,7 +10,6 @@ const app = new Vue({
     addTask: function() {
       this.todos.push({
         name: this.newTask,
-        isDone: false
       })
       this.newTask = null
     },

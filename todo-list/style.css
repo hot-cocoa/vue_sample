@@ -1,9 +1,24 @@
-.todo-area{
-  min-height: 15px;
+.tasks-area {
+  display: flex;
+  margin: 30px;
+  padding: 5px;
 }
-.doing-area{
-  min-height: 15px;
+.todo-area {
+  width: 200px;
+  background: #1480bc;
 }
-.done-area{
-  min-height: 15px;
+.doing-area {
+  width: 200px;
+  background: #ffffff;
+}
+.done-area {
+  width: 200px;
+  background: #ef0013;
+}
+.items-area {
+  min-height: 150px;
+}
+.item {
+  width: 200px;
+  border: 0.5px solid;
 }
