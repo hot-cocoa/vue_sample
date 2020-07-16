@@ -4,8 +4,11 @@
       <div class="tasks-container" v-for="elem in elems" :key="elem.title">
         <h2>{{ elem.title }}</h2>
         <draggable class="tasks-area" :options="{group: 'TASKS', animation: 150}">
-          <div class="card" v-bind:key="item" v-for="item in elem.items">
-            {{ item.name }}
+          <div v-bind:key="item" v-for="(item, index) in elem.items">
+            <div class="item">
+              <div class="card">{{ item.name }}</div>
+              <button @click="deleteTask(elem.items, index)">×</button>
+            </div>
           </div>
         </draggable>
       </div>
@@ -50,6 +53,9 @@ export default {
         name: this.newTask,
       })
       this.newTask = null
+    },
+    deleteTask: function(items, index) {
+      items.splice(index, 1)
     }
   }
 }
@@ -66,13 +72,12 @@ export default {
 }
 .tasks-containers {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .tasks-container {
   min-width: 500px;
   max-width: 500px;
   min-height: 400px;
-  width: 90%;
   border: solid #888888 1.5px;
   justify-content: center;
   align-items: center;
@@ -81,12 +86,16 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.item {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
 .card {
   font-size: 12px;
   padding: 10px;
   cursor: pointer;
   border: solid #cccccc 1.5px;
   border-radius: 5px;
-  width: 80%;
 }
 </style>
