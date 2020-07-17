@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body">
               <input type="text" v-model="newTask" placeholder="Please input task">
-              <button v-on:click="addTask(elem.items)">追加</button>
+              <button v-on:click="addTask(elem.items)">Add</button>
             </div>
           </modal>
         </div>
