@@ -1,22 +1,38 @@
 <template>
   <div id="app">
     <div class="tasks-containers">
-      <div
-        class="tasks-container"
-        v-for="elem in elems"
-        :key="elem.title"
-      >
+      <div class="tasks-container">
         <div class="container-header">
-          <h2 class="header-title">{{ elem.title }}</h2>
+          <h2 class="header-title">ToDo</h2>
           <button
             class="header-button"
             @click="show"
           >+</button>
-          <task-add-modal :items="elem.items"></task-add-modal>
+          <task-add-modal :items="todos"></task-add-modal>
         </div>
         <task-container
           class="container-body"
-          :items="elem.items">
+          :items="todos">
+        </task-container>
+      </div>
+
+      <div class="tasks-container">
+        <div class="container-header">
+          <h2 class="header-title">Doing</h2>
+        </div>
+        <task-container
+          class="container-body"
+          :items="doings">
+        </task-container>
+      </div>
+
+      <div class="tasks-container">
+        <div class="container-header">
+          <h2 class="header-title">Done</h2>
+        </div>
+        <task-container
+          class="container-body"
+          :items="dones">
         </task-container>
       </div>
     </div>
@@ -35,25 +51,14 @@ export default {
   },
   data() {
     return {
-      elems: [
-        {
-          title: "ToDo",
-          items: []
-        },
-        {
-          title: "Doing",
-          items: []
-        },
-        {
-          title: "Done",
-          items: []
-        }
-      ]
+      todos:  [],
+      doings: [],
+      dones:  []
     }
   },
   methods: {
     show: function() {
-      this.$modal.show('add-task')
+      this.$modal.show("add-task")
     }
   }
 }

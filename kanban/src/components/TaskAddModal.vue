@@ -1,17 +1,30 @@
 <template>
-  <modal name="add-task" :draggable="true" :resizable="true">
+  <modal
+    name="add-task"
+    :draggable="true"
+    :resizable="true"
+  >
     <div class="modal-header">
       <h2 class="header-title">New Task</h2>
-      <button class="header-button" @click="hide">×</button>
+      <button
+        class="header-button"
+        @click="hide"
+      >×</button>
     </div>
     <div class="modal-body">
-      <input type="text" v-model="newTask" placeholder="Please input task">
-      <button v-on:click="addTask">Add</button>
+      <input
+        type="text"
+        v-model="newTask"
+        placeholder="Please input task"
+      >
+      <button @click="addTask">Add</button>
     </div>
   </modal>
 </template>
 
 <script>
+import VueTypes from 'vue-types'
+
 export default {
   data() {
     return {
@@ -19,7 +32,9 @@ export default {
     }
   },
   props: {
-    items: []
+    items: VueTypes.arrayOf(VueTypes.shape({
+      name: VueTypes.string.isRequired
+    })).isRequired
   },
   methods: {
     addTask: function() {
@@ -29,7 +44,7 @@ export default {
       this.newTask = null
     },
     hide: function() {
-      this.$modal.hide('add-task')
+      this.$modal.hide("add-task")
     }
   }
 }

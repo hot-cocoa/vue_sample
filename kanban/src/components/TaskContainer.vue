@@ -1,6 +1,9 @@
 <template>
   <draggable :options="{group: 'TASKS', animation: 150}">
-    <div :key="item" v-for="(item, index) in items">
+    <div
+      :key="item"
+      v-for="(item, index) in items"
+    >
       <div class="item">
         <task-card :name="item.name"></task-card>
         <button @click="deleteTask(index)">×</button>
@@ -10,6 +13,7 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
 import draggable from "vuedraggable"
 import taskCard from "./TaskCard.vue"
 
@@ -19,7 +23,9 @@ export default {
     taskCard
   },
   props: {
-    items: []
+    items: VueTypes.arrayOf(VueTypes.shape({
+      name: VueTypes.string.isRequired
+    })).isRequired,
   },
   methods: {
     deleteTask: function(index) {
