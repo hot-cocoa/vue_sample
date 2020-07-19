@@ -1,40 +1,24 @@
 <template>
   <div id="app">
     <div class="tasks-containers">
-      <div class="tasks-container">
+      <div
+        v-for="elem in elems"
+        class="tasks-container"
+        :key="elem.title"
+      >
         <div class="container-header">
-          <h2 class="header-title">ToDo</h2>
-          <button
-            class="header-button"
-            @click="show"
-          >+</button>
-          <task-add-modal :items="todos"></task-add-modal>
+          <h2 class="header-title">{{ elem.title }}</h2>
+          <task-add-modal :items="elem.items"></task-add-modal>
         </div>
         <task-container
           class="container-body"
-          :items="todos">
+          :items="elem.items">
         </task-container>
       </div>
-
-      <div class="tasks-container">
-        <div class="container-header">
-          <h2 class="header-title">Doing</h2>
-        </div>
-        <task-container
-          class="container-body"
-          :items="doings">
-        </task-container>
-      </div>
-
-      <div class="tasks-container">
-        <div class="container-header">
-          <h2 class="header-title">Done</h2>
-        </div>
-        <task-container
-          class="container-body"
-          :items="dones">
-        </task-container>
-      </div>
+    </div>
+    <div class="footer">
+      <button @click="saveStorage">Save</button>
+      <button @click="resetStorage">Reset</button>
     </div>
   </div>
 </template>
@@ -51,14 +35,44 @@ export default {
   },
   data() {
     return {
-      todos:  [],
-      doings: [],
-      dones:  []
+      elems: {
+        todos: {
+          title: "ToDo",
+          items: []
+        },
+        doings: {
+          title: "Doing",
+          items: []
+        },
+        dones: {
+          title: "Done",
+          items: []
+        }
+      }
+    }
+  },
+  mounted() {
+    if (localStorage.getItem('todos')) {
+      this.elems.todos.items = localStorage.getItem('todos')
+      this.elems.todos.items = JSON.parse(this.elems.todos.items)
+    }
+    if (localStorage.getItem('doings')) {
+      this.elems.doings.items = localStorage.getItem('doings')
+      this.elems.doings.items = JSON.parse(this.elems.doings.items)
+    }
+    if (localStorage.getItem('dones')) {
+      this.elems.dones.items = localStorage.getItem('dones')
+      this.elems.dones.items = JSON.parse(this.elems.dones.items)
     }
   },
   methods: {
-    show: function() {
-      this.$modal.show("add-task")
+    saveStorage: function() {
+      localStorage.setItem('todos',  JSON.stringify(this.elems.todos.items))
+      localStorage.setItem('doings', JSON.stringify(this.elems.doings.items))
+      localStorage.setItem('dones',  JSON.stringify(this.elems.dones.items))
+    },
+    resetStorage: function() {
+      localStorage.clear()
     }
   }
 }
@@ -88,10 +102,6 @@ export default {
 .header-title {
   color: #ffffff;
 }
-.header-button {
-  position: absolute;
-  right: 0;
-}
 .container-header {
   display: flex;
   justify-content: center;
@@ -101,5 +111,11 @@ export default {
 .container-body {
   justify-content: center;
   align-items: center;
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  padding: 15px;
 }
 </style>
