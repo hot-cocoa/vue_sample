@@ -5,7 +5,7 @@
       @click="show"
     >+</button>
     <modal
-      v-if="modalState"
+      v-if="showModal"
       name="add-task"
       :draggable="true"
       :resizable="true"
@@ -52,22 +52,11 @@ export default {
       this.newTask = null
     },
     show: function() {
-      this.modalState = true
+      this.showModal = true
       this.$modal.show("add-task")
     },
     hide: function() {
-      this.modalState = false
       this.$modal.hide("add-task")
-    }
-  },
-  computed: {
-    modalState: {
-      get() {
-        return this.showModal
-      },
-      set(showModal) {
-        this.showModal = showModal
-      }
     }
   }
 }

@@ -52,18 +52,12 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.getItem('todos')) {
-      this.elems.todos.items = localStorage.getItem('todos')
-      this.elems.todos.items = JSON.parse(this.elems.todos.items)
-    }
-    if (localStorage.getItem('doings')) {
-      this.elems.doings.items = localStorage.getItem('doings')
-      this.elems.doings.items = JSON.parse(this.elems.doings.items)
-    }
-    if (localStorage.getItem('dones')) {
-      this.elems.dones.items = localStorage.getItem('dones')
-      this.elems.dones.items = JSON.parse(this.elems.dones.items)
-    }
+    if (localStorage.getItem('todos'))
+      this.elems.todos.items = JSON.parse(localStorage.getItem('todos'))
+    if (localStorage.getItem('doings'))
+      this.elems.doings.items = JSON.parse(localStorage.getItem('doings'))
+    if (localStorage.getItem('dones'))
+      this.elems.dones.items = JSON.parse(localStorage.getItem('dones'))
   },
   methods: {
     saveStorage: function() {

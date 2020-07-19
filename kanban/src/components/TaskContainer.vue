@@ -1,9 +1,6 @@
 <template>
-  <draggable :options="{group: 'TASKS', animation: 150}">
-    <div
-      :key="item"
-      v-for="(item, index) in items"
-    >
+  <draggable v-bind="options">
+    <div v-for="(item, index) in items" :key="index">
       <div class="item">
         <task-card :name="item.name"></task-card>
         <button @click="deleteTask(index)">×</button>
@@ -21,6 +18,14 @@ export default {
   components: {
     draggable,
     taskCard
+  },
+  data() {
+    return {
+      options: {
+        group: 'TASKS',
+        animation: 150
+      }
+    }
   },
   props: {
     items: VueTypes.arrayOf(VueTypes.shape({
