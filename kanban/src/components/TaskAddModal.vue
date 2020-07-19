@@ -10,23 +10,23 @@
       :draggable="true"
       :resizable="true"
     >
-    <div class="modal-header">
-      <h2 class="header-title">New Task</h2>
-      <button
-        class="header-button"
-        @click="hide"
-      >×</button>
-    </div>
-    <div class="modal-body">
-      <input
-        type="text"
-        v-model="newTask"
-        placeholder="Please input task"
-      >
-      <button @click="addTask">Add</button>
-    </div>
-  </modal>
-</div>
+      <div class="modal-header">
+        <h2 class="header-title">New Task</h2>
+        <button
+          class="header-button"
+          @click="hide"
+        >×</button>
+      </div>
+      <div class="modal-body">
+        <input
+          type="text"
+          v-model="newTask"
+          placeholder="Please input task"
+        >
+        <button @click="addTask">Add</button>
+      </div>
+    </modal>
+  </div>
 </template>
 
 <script>
