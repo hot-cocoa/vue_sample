@@ -1,4 +1,4 @@
-import JudgeRepository from './JudgeRepository';
+import PostsRepository from './PostsRepository';
 
 const repositories = {
     'posts': PostsRepository
