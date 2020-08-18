@@ -6,7 +6,7 @@ app.post('/app', (req, res) => {
     res.send({
         "message": "connection OK"
     });
-};
+});
 
 app.listen('3000', () => {
     console.log('Application Started');
