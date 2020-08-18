@@ -4,6 +4,6 @@ const repositories = {
     'posts': PostsRepository
 };
 
-export default {
+export const RepositoryFactory = {
     get: name => repositories[name]
 };
