@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <input type="text" v-model="body.test1" v-bind:value="body.test1" placeholder="test1">
-        <input type="text" v-model="body.test2" v-bind:value="body.test2" placeholder="test2">
+        <input type="text" v-model="body.test1" placeholder="test1">
+        <input type="text" v-model="body.test2" placeholder="test2">
         <button v-on:click="send">送信</button>
     </div>
 </template>
