@@ -1,6 +1,6 @@
 import Repository from './Repository';
 
-const resource = 'server.js';
+const resource = '/app';
 
 export default {
   send(payload) {

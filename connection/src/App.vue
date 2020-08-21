@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <input type="text" v-model="body.test1" placeholder="test1">
-    <input type="text" v-model="body.test2" placeholder="test2">
-    <button v-on:click="send">送信</button>
+    <input type="text" v-model="test1" placeholder="test1">
+    <input type="text" v-model="test2" placeholder="test2">
+    <button @click="send">送信</button>
   </div>
 </template>
 
@@ -13,15 +13,14 @@ const PostsRepository = RepositoryFactory.get('posts');
 export default {
   data() {
     return {
-      body: {
-        test1: null,
-        test2: null
-      }
+      test1: null,
+      test2: null
     }
   },
   methods: {
     async send() {
-      const response = await PostsRepository.send();
+      const body = { test1: this.test1, test2: this.test2 };
+      const response = await PostsRepository.send(body);
       console.log(response);
     }
   }
